@@ -1,4 +1,7 @@
 import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.gradle.internal.cxx.gradle.generator.externalNativeBuildIsActive
+import com.dk.convention.ExtensionType
+import com.dk.convention.configureBuildTypes
 import com.dk.convention.configureKotlinAndroid
 import com.dk.convention.libs
 import org.gradle.api.Plugin
@@ -23,6 +26,11 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
                 }
 
                 configureKotlinAndroid(this)
+
+                configureBuildTypes(
+                    commonExtension = this,
+                    extensionType = ExtensionType.APPLICATION
+                )
             }
         }
     }
