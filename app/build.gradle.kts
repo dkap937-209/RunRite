@@ -1,7 +1,7 @@
 plugins {
+    alias(libs.plugins.runrite.android.application.compose)
     alias(libs.plugins.mapsplatform.secrets.plugin)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.runrite.android.application)
 }
 
 
@@ -13,9 +13,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-    buildFeatures {
-        compose = true
     }
     packaging {
         resources {

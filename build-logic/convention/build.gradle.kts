@@ -12,20 +12,15 @@ dependencies {
     compileOnly(libs.room.gradlePlugin)
 }
 
-//gradlePlugin {
-//    plugins {
-//        register("androidApplication") {
-//            id = "runrite.android.application"
-//            implementationClass = "AndroidApplicationConventionPlugin"
-//        }
-//    }
-//}
-
 gradlePlugin {
     plugins {
         register("androidApplication") {
             id = "runrite.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        register("androidApplicationCompose") {
+            id = "runrite.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
     }
 }
