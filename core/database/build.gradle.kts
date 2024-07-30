@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.runrite.android.library)
+    alias(libs.plugins.runrite.android.room)
 }
 
 android {
