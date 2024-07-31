@@ -33,6 +33,8 @@ coroutines = "1.8.1"
 gmsLocation = "21.3.0"
 mapsUtils = "5.0.0"
 bson = "4.11.1"
+uiTooling = "1.6.8"
+uiToolingPreview = "1.6.8"
 work = "2.9.0"
 kotlinx-serialization = "1.6.3"
 secretsPlugin = "2.0.1"
@@ -61,6 +63,7 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-security-crypto-ktx = { module = "androidx.security:security-crypto-ktx", version.ref = "securityCryptoKtx" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 core = { module = "com.google.android.play:core", version.ref = "playCore" }
 core-testing = { module = "com.google.android.play:core-testing", version.ref = "playCore" }
@@ -120,6 +123,7 @@ android-tools-common = { group = "com.android.tools", name = "common", version.r
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -143,6 +147,8 @@ runrite-android-dynamic-feature = { id = "runrite.android.dynamic.feature", vers
 runrite-jvm-library = { id = "runrite.jvm.library", version = "unspecified" }
 runrite-jvm-ktor = { id = "runrite.jvm.ktor", version = "unspecified" }
 runrite-android-application-wear-compose = { id = "runrite.android.application.wear.compose", version = "unspecified" }
+
+
 
 [bundles]
 compose = [
