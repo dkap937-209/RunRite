@@ -1,10 +1,8 @@
 package com.dk.auth.presentation.intro
 
-import android.media.tv.TvContract.Channels.Logo
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,7 +25,7 @@ import com.dk.core.presentation.designsystem.components.RunRiteActionButton
 import com.dk.core.presentation.designsystem.components.RunRiteOutlinedActionButton
 
 @Composable
-fun IntroScreenRoute(
+fun IntroScreenRoot(
     onSignUpClick: () -> Unit,
     onSignInClick: () -> Unit
 ) {
