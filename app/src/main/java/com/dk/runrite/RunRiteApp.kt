@@ -3,6 +3,7 @@ package com.dk.runrite
 import android.app.Application
 import com.dk.auth.data.di.authDataModule
 import com.dk.auth.presentation.di.authViewModelModule
+import com.dk.core.data.di.coreDataModule
 import com.dk.runrite.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -24,6 +25,7 @@ class RunRiteApp: Application() {
                 appModule,
                 authDataModule,
                 authViewModelModule,
+                coreDataModule
             )
         }
     }
