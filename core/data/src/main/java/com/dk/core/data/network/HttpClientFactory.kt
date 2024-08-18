@@ -49,14 +49,14 @@ class HttpClientFactory(
             install(Auth) {
                 bearer {
                     loadTokens {
-                        val info = sessionStorage.get()
+                        val info = sessionStorage?.get()
                         BearerTokens(
                             accessToken = info?.accessToken ?: "",
                             refreshToken = info?.refreshToken ?: "",
                         )
                     }
                     refreshTokens {
-                        val info = sessionStorage.get()
+                        val info = sessionStorage?.get()
                         val response = client.post<AccessTokenRequest, AccessTokenResponse>(
                             route = "/accessToken",
                             body = AccessTokenRequest(
@@ -71,7 +71,7 @@ class HttpClientFactory(
                                 refreshToken = info?.refreshToken ?: "",
                                 userId = info?.userId ?: ""
                             )
-                            sessionStorage.set(newAuthInfo)
+                            sessionStorage?.set(newAuthInfo)
                             BearerTokens(
                                 accessToken = newAuthInfo.accessToken,
                                 refreshToken = newAuthInfo.refreshToken,
