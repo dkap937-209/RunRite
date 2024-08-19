@@ -111,7 +111,7 @@ private fun RegisterScreen(
                 withStyle(
                     style = SpanStyle(
                         fontFamily = Poppins,
-                        color = RunriteGray
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 ){
                     append(stringResource(id = R.string.already_have_an_account) + " ")
