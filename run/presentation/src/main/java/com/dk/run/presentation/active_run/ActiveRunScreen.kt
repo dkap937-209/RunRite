@@ -33,6 +33,7 @@ import com.dk.core.presentation.designsystem.components.RunRiteScaffold
 import com.dk.core.presentation.designsystem.components.RunRiteToolBar
 import com.dk.run.presentation.R
 import com.dk.run.presentation.active_run.components.RunDataCard
+import com.dk.run.presentation.active_run.maps.TrackerMap
 import com.dk.run.presentation.util.hasLocationPermission
 import com.dk.run.presentation.util.hasNotificationPermission
 import com.dk.run.presentation.util.shouldShowLocationPermissionRationale
@@ -139,6 +140,14 @@ private fun ActiveRunScreen(
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.surface)
         ) {
+            TrackerMap(
+                modifier = Modifier
+                    .fillMaxSize(),
+                isRunFinished = state.isRunFinished,
+                currentLocation = state.currentLocation,
+                location = state.runData.locations,
+                onSnapshot = {},
+            )
             RunDataCard(
                 modifier = Modifier
                     .padding(padding)
@@ -147,6 +156,8 @@ private fun ActiveRunScreen(
                 elapsedTime = state.elapsedTime,
                 runData = state.runData
             )
+
+
         }
     }
 
