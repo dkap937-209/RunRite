@@ -1,16 +1,18 @@
 package com.dk.core.presentation.ui
 
+import android.annotation.SuppressLint
 import android.app.DirectAction
 import kotlin.math.pow
 import kotlin.math.round
 import kotlin.math.roundToInt
 import kotlin.time.Duration
 
+@SuppressLint("DefaultLocale")
 fun Duration.formatted(): String {
     val totalSeconds = inWholeSeconds
-    val hours = String.format("%02d", totalSeconds / 3600)
+    val hours = String.format("%02d", totalSeconds / (60 * 60))
     val minutes = String.format("%02d", (totalSeconds % 3600) / 60)
-    val seconds = String.format("%02d", totalSeconds / 60)
+    val seconds = String.format("%02d", (totalSeconds % 60))
 
     return "$hours:$minutes:$seconds"
 }
@@ -19,6 +21,7 @@ fun Double.toFormattedKm(): String {
     return "${this.roundToDecimals(1)} km"
 }
 
+@SuppressLint("DefaultLocale")
 fun Duration.toFormattedPace(distanceKm: Double): String {
     if(this == Duration.ZERO || distanceKm <= 0.0){
         return "-"

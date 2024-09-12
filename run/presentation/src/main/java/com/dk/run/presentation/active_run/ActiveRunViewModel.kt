@@ -100,7 +100,6 @@ class ActiveRunViewModel(
                     showLocationRationale = false
                 )
             }
-            else -> Unit
         }
     }
 }

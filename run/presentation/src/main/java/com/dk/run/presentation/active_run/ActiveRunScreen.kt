@@ -145,7 +145,7 @@ private fun ActiveRunScreen(
                     .fillMaxSize(),
                 isRunFinished = state.isRunFinished,
                 currentLocation = state.currentLocation,
-                location = state.runData.locations,
+                locations = state.runData.locations,
                 onSnapshot = {},
             )
             RunDataCard(
@@ -156,8 +156,6 @@ private fun ActiveRunScreen(
                 elapsedTime = state.elapsedTime,
                 runData = state.runData
             )
-
-
         }
     }
 

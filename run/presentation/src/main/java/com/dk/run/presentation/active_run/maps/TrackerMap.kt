@@ -37,7 +37,7 @@ fun TrackerMap(
     modifier: Modifier = Modifier,
     isRunFinished: Boolean,
     currentLocation: Location?,
-    location: List<List<LocationTimestamp>>,
+    locations: List<List<LocationTimestamp>>,
     onSnapshot: (Bitmap) -> Unit
 ) {
     val context = LocalContext.current
@@ -79,7 +79,6 @@ fun TrackerMap(
         }
     }
 
-
     GoogleMap(
         modifier = modifier,
         cameraPositionState = cameraPositionState,
@@ -90,6 +89,8 @@ fun TrackerMap(
             zoomControlsEnabled = false
         )
     ) {
+        RunRitePolylines(locations = locations)
+
         if((!isRunFinished)  && currentLocation != null) {
             MarkerComposable(
                 currentLocation,
