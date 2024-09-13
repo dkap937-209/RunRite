@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.dk.core.presentation.designsystem.RunRiteTheme
 import com.dk.core.presentation.designsystem.StartIcon
 import com.dk.core.presentation.designsystem.StopIcon
+import com.dk.core.presentation.designsystem.components.RunRiteActionButton
 import com.dk.core.presentation.designsystem.components.RunRiteDialog
 import com.dk.core.presentation.designsystem.components.RunRiteFloatingActionButton
 import com.dk.core.presentation.designsystem.components.RunRiteOutlinedActionButton
@@ -157,6 +158,38 @@ private fun ActiveRunScreen(
                 runData = state.runData
             )
         }
+    }
+
+    if(!state.shouldTrack && state.hasStartedRunning) {
+        RunRiteDialog(
+            title = stringResource(id = R.string.running_is_paused),
+            onDismiss = {
+                onAction(ActiveRunAction.OnResumeClick)
+            },
+            description = stringResource(id = R.string.resume_or_finish_run),
+            primaryButton = {
+              RunRiteActionButton(
+                  text = stringResource(id = R.string.resume),
+                  isLoading = false,
+                  onClick = {
+                      onAction(ActiveRunAction.OnResumeClick)
+                  },
+                  modifier = Modifier
+                      .weight(1f)
+              )
+            },
+            secondaryButton = {
+                RunRiteOutlinedActionButton(
+                    text = stringResource(id = R.string.finish),
+                    isLoading = state.isSavingRun,
+                    onClick = {
+                        onAction(ActiveRunAction.OnFinishRunClick)
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                )
+            }
+        )
     }
 
     if(state.showLocationRationale || state.showNotificationRationale) {
