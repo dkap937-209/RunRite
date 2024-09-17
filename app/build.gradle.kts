@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.runrite.android.application.compose)
     alias(libs.plugins.runrite.jvm.ktor)
-    alias(libs.plugins.mapsplatform.secrets.plugin)
     alias(libs.plugins.compose.compiler)
 }
 
