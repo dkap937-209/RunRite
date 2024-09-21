@@ -4,6 +4,7 @@ import android.app.Application
 import com.dk.auth.data.di.authDataModule
 import com.dk.auth.presentation.di.authViewModelModule
 import com.dk.core.data.di.coreDataModule
+import com.dk.core.database.di.databaseModule
 import com.dk.run.location.di.locationModule
 import com.dk.run.presentation.di.runPresentationModule
 import com.dk.runrite.di.appModule
@@ -33,7 +34,8 @@ class RunRiteApp: Application() {
                 authViewModelModule,
                 coreDataModule,
                 runPresentationModule,
-                locationModule
+                locationModule,
+                databaseModule
             )
         }
     }
