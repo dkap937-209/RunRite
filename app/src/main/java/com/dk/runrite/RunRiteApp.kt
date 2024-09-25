@@ -6,6 +6,7 @@ import com.dk.auth.presentation.di.authViewModelModule
 import com.dk.core.data.di.coreDataModule
 import com.dk.core.database.di.databaseModule
 import com.dk.run.location.di.locationModule
+import com.dk.run.network.di.networkModule
 import com.dk.run.presentation.di.runPresentationModule
 import com.dk.runrite.di.appModule
 import kotlinx.coroutines.CoroutineScope
@@ -35,7 +36,8 @@ class RunRiteApp: Application() {
                 coreDataModule,
                 runPresentationModule,
                 locationModule,
-                databaseModule
+                databaseModule,
+                networkModule
             )
         }
     }
