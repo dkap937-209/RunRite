@@ -24,8 +24,5 @@ interface RunDao {
     suspend fun deleteRun(id: String)
 
     @Query("DELETE FROM runentity")
-    suspend fun deleteAllRuns() {
-
-    }
-
+    suspend fun deleteAllRuns()
 }
