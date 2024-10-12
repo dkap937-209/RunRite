@@ -12,70 +12,48 @@ import org.gradle.kotlin.dsl.configure
 internal fun Project.configureBuildTypes(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
     extensionType: ExtensionType
-){
+) {
     commonExtension.run {
-        buildFeatures{
+        buildFeatures {
             buildConfig = true
         }
 
         val apiKey = gradleLocalProperties(rootDir, rootProject.providers).getProperty("API_KEY")
         val baseUrl = gradleLocalProperties(rootDir, rootProject.providers).getProperty("BASE_URL")
-
-        when(extensionType){
+        when(extensionType) {
             ExtensionType.APPLICATION -> {
-                extensions.configure<ApplicationExtension>{
+                extensions.configure<ApplicationExtension> {
                     buildTypes {
                         debug {
-                            configureDebugBuildType(
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureDebugBuildType(apiKey, baseUrl)
                         }
                         release {
-                            configureReleaseBuildType(
-                                commonExtension = commonExtension,
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureReleaseBuildType(commonExtension, apiKey, baseUrl)
                         }
                     }
                 }
             }
             ExtensionType.LIBRARY -> {
-                extensions.configure<LibraryExtension>{
+                extensions.configure<LibraryExtension> {
                     buildTypes {
                         debug {
-                            configureDebugBuildType(
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureDebugBuildType(apiKey, baseUrl)
                         }
                         release {
-                            configureReleaseBuildType(
-                                commonExtension = commonExtension,
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureReleaseBuildType(commonExtension, apiKey, baseUrl)
                         }
                     }
                 }
             }
-
             ExtensionType.DYNAMIC_FEATURE -> {
-                extensions.configure<DynamicFeatureExtension>{
+                extensions.configure<DynamicFeatureExtension> {
                     buildTypes {
                         debug {
-                            configureDebugBuildType(
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureDebugBuildType(apiKey, baseUrl)
                         }
                         release {
-                            configureReleaseBuildType(
-                                commonExtension = commonExtension,
-                                apiKey = apiKey,
-                                baseUrl = baseUrl
-                            )
+                            configureReleaseBuildType(commonExtension, apiKey, baseUrl)
+                            isMinifyEnabled = false
                         }
                     }
                 }

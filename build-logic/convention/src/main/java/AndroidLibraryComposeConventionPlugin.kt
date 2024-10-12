@@ -16,6 +16,7 @@ class AndroidLibraryComposeConventionPlugin: Plugin<Project> {
         target.run {
             pluginManager.run {
                 apply("runrite.android.library")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
 
             val extension = extensions.getByType<LibraryExtension>()
