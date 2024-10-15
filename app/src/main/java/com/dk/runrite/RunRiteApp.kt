@@ -1,6 +1,7 @@
 package com.dk.runrite
 
 import android.app.Application
+import android.content.Context
 import com.dk.auth.data.di.authDataModule
 import com.dk.auth.presentation.di.authViewModelModule
 import com.dk.core.data.di.coreDataModule
@@ -10,6 +11,7 @@ import com.dk.run.location.di.locationModule
 import com.dk.run.network.di.networkModule
 import com.dk.run.presentation.di.runPresentationModule
 import com.dk.runrite.di.appModule
+import com.google.android.play.core.splitcompat.SplitCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
@@ -44,5 +46,10 @@ class RunRiteApp: Application() {
                 runDataModule
             )
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        SplitCompat.install(this)
     }
 }
