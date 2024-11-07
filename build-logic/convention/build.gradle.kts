@@ -22,6 +22,10 @@ gradlePlugin {
             id = "runrite.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        register("androidApplicationWearCompose") {
+            id = "runrite.android.application.wear.compose"
+            implementationClass = "AndroidApplicationWearComposeConventionPlugin"
+        }
         register("androidLibrary") {
             id = "runrite.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
