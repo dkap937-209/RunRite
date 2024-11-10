@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connect_your_phone">This app requires the RunRite app to be installed on your phone and connected.</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="unsupported">Unsupported</string>
+    <string name="distance">Distance</string>
+    <string name="open_active_run_screen">Please open the new run screen on your phone to get started.</string>
+    <string name="pause_run">Pause Run</string>
+    <string name="start_run">Start Run</string>
+    <string name="finish">Finish</string>
+</resources>
