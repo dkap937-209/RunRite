@@ -14,11 +14,13 @@ import com.dk.core.domain.util.Result
 import com.dk.core.presentation.ui.asUiText
 import com.dk.run.domain.LocationDataCalculator
 import com.dk.run.domain.RunningTracker
+import com.dk.run.domain.WatchConnector
 import com.dk.run.presentation.active_run.service.ActiveRunService
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -30,7 +32,8 @@ import java.time.ZonedDateTime
 
 class ActiveRunViewModel(
     private val runningTracker: RunningTracker,
-    private val runRepository: RunRepository
+    private val runRepository: RunRepository,
+    private val watchConnector: WatchConnector
 ): ViewModel() {
 
     var state by mutableStateOf(ActiveRunState(
@@ -55,6 +58,13 @@ class ActiveRunViewModel(
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
     init{
+        watchConnector
+            .connectedDevice
+            .filterNotNull()
+            .onEach {
+                Timber.d("New device detected: ${it.displayName}")
+            }
+            .launchIn(viewModelScope)
         hasLocationPermission.onEach { hasPermission ->
             if(hasPermission){
                 runningTracker.startObservingLocation()
