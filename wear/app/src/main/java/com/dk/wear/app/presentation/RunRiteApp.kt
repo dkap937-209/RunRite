@@ -1,7 +1,7 @@
 package com.dk.wear.app.presentation
 
 import android.app.Application
-import com.dk.core.connectivity.data.coreConnectivityDataModule
+import com.dk.core.connectivity.data.di.coreConnectivityDataModule
 import com.dk.wear.app.presentation.di.appModule
 import com.dk.wear.run.data.di.wearRunDataModule
 import com.dk.wear.run.presentation.di.wearRunPresentationModule

@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.dk.auth.data.di.authDataModule
 import com.dk.auth.presentation.di.authViewModelModule
-import com.dk.core.connectivity.data.coreConnectivityDataModule
+import com.dk.core.connectivity.data.di.coreConnectivityDataModule
 import com.dk.core.data.di.coreDataModule
 import com.dk.core.database.di.databaseModule
 import com.dk.core.presentation.ui.BuildConfig
