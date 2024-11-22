@@ -28,7 +28,7 @@ class WatchToPhoneConnector(
 
     private val _connectedNode = MutableStateFlow<DeviceNode?>(null)
 
-    override val connectedNodes: StateFlow<DeviceNode?>
+    override val connectedNode: StateFlow<DeviceNode?>
         get() = _connectedNode.asStateFlow()
 
     override val messagingActions = nodeDiscovery

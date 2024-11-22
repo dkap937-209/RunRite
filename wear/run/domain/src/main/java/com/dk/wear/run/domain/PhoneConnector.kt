@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
 interface PhoneConnector {
-    val connectedNodes: StateFlow<DeviceNode?>
+    val connectedNode: StateFlow<DeviceNode?>
     val messagingActions: Flow<MessagingAction>
 
     suspend fun sendActionToPhone(action: MessagingAction): EmptyResult<MessagingError>
