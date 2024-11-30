@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.wear.compose.material3.TimeText
 import com.dk.core.connectivity.domain.messaging.MessagingAction
 import com.dk.core.domain.util.Result
+import com.dk.core.notification.ActiveRunService
 import com.dk.wear.run.domain.ExerciseTracker
 import com.dk.wear.run.domain.PhoneConnector
 import com.dk.wear.run.domain.RunningTracker
@@ -31,7 +32,11 @@ class TrackerViewModel(
     private val runningTracker: RunningTracker
 ): ViewModel() {
 
-    var state by mutableStateOf(TrackerState())
+    var state by mutableStateOf(TrackerState(
+        hasStartedRunning = ActiveRunService.isServiceActive.value,
+        isRunActive = ActiveRunService.isServiceActive.value && runningTracker.isTracking.value,
+        isTrackable = ActiveRunService.isServiceActive.value
+    ))
         private set
 
     private val hasBodySensorPermissions = MutableStateFlow(false)

@@ -1,6 +1,5 @@
 package com.dk.run.presentation.active_run
 
-import androidx.compose.animation.core.snap
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -16,7 +15,7 @@ import com.dk.core.presentation.ui.asUiText
 import com.dk.run.domain.LocationDataCalculator
 import com.dk.run.domain.RunningTracker
 import com.dk.run.domain.WatchConnector
-import com.dk.run.presentation.active_run.service.ActiveRunService
+import com.dk.core.notification.ActiveRunService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,8 +40,8 @@ class ActiveRunViewModel(
 ): ViewModel() {
 
     var state by mutableStateOf(ActiveRunState(
-        shouldTrack = ActiveRunService.isServiceActive && runningTracker.isTracking.value,
-        hasStartedRunning = ActiveRunService.isServiceActive,
+        shouldTrack = ActiveRunService.isServiceActive.value && runningTracker.isTracking.value,
+        hasStartedRunning = ActiveRunService.isServiceActive.value,
     ))
         private set
 
@@ -250,7 +249,7 @@ class ActiveRunViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        if(!ActiveRunService.isServiceActive) {
+        if(!ActiveRunService.isServiceActive.value) {
             applicationScope.launch {
                 watchConnector.sendActionToWatch(MessagingAction.Untrackable)
             }

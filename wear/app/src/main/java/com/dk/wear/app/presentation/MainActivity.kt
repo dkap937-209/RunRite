@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.dk.core.notification.ActiveRunService
 import com.dk.core.presentation.designsystem_wear.RunRiteTheme
 import com.dk.wear.run.presentation.TrackerScreenScreenRoot
 
@@ -15,7 +16,23 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             RunRiteTheme {
-                TrackerScreenScreenRoot()
+                TrackerScreenScreenRoot(
+                    onServiceToggle = { shouldStartRun ->
+                        if(shouldStartRun) {
+                            startService(
+                                ActiveRunService.createStartIntent(
+                                    applicationContext, this::class.java
+                                )
+                            )
+                        } else {
+                            startService(
+                                ActiveRunService.createStopIntent(
+                                    applicationContext
+                                )
+                            )
+                        }
+                    }
+                )
             }
         }
     }
